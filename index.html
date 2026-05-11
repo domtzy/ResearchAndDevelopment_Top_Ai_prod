@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIBoost — Top AI Tools 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --accent: #00e5a0;
+    --accent2: #0099ff;
+    --accent3: #ff4d6d;
+    --glow: rgba(0,229,160,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: rgba(10,12,16,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 22px;
+    letter-spacing: -0.5px;
+    color: var(--accent);
+  }
+  .nav-logo span { color: var(--text); }
+  .nav-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 4px 12px;
+  }
+
+  .hero {
+    padding: 100px 40px 60px;
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 2px; font-weight: 600;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(0,229,160,0.08);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 20px; padding: 5px 14px; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -2px; margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 17px; color: var(--muted); max-width: 520px;
+    margin: 0 auto 48px; font-weight: 300;
+  }
+
+  .filter-bar {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 60px; padding: 0 40px;
+  }
+  .filter-btn {
+    padding: 7px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
+    border: 1px solid var(--border); background: transparent; color: var(--muted);
+    cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: rgba(0,229,160,0.1); border-color: rgba(0,229,160,0.3);
+    color: var(--accent);
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px; padding: 0 40px 100px; max-width: 1200px; margin: 0 auto;
+  }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+    cursor: pointer; position: relative; overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .tool-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 70% 20%, var(--card-glow, rgba(0,229,160,0.06)), transparent 60%);
+    pointer-events: none;
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--card-accent, rgba(0,229,160,0.2));
+  }
+  .card-number {
+    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--card-accent-color, var(--accent));
+    margin-bottom: 18px; display: block;
+  }
+  .card-icon {
+    width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    background: var(--card-icon-bg, rgba(0,229,160,0.1));
+    border: 1px solid var(--card-icon-border, rgba(0,229,160,0.2));
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700;
+    margin-bottom: 4px; letter-spacing: -0.3px;
+  }
+  .card-tagline {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+    color: var(--card-accent-color, var(--accent));
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .card-desc {
+    font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px;
+  }
+  .card-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;
+  }
+  .card-tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 12px;
+    background: rgba(255,255,255,0.05); color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .card-btn {
+    width: 100%; padding: 11px;
+    background: transparent;
+    border: 1px solid var(--card-accent-color, var(--accent));
+    color: var(--card-accent-color, var(--accent));
+    border-radius: 8px; font-size: 13px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 0.3px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: auto;
+  }
+  .card-btn:hover {
+    background: var(--card-accent-color, var(--accent));
+    color: #000;
+  }
+
+  #detail-page .nav {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .back-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 8px 16px; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .detail-hero {
+    padding: 60px 40px 40px; max-width: 900px; margin: 0 auto;
+  }
+  .detail-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 2px; font-weight: 600;
+    text-transform: uppercase; color: var(--detail-accent, var(--accent));
+    background: rgba(0,229,160,0.08);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 20px; padding: 5px 14px; margin-bottom: 20px;
+  }
+  .detail-title {
+    font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800; letter-spacing: -1.5px; margin-bottom: 8px;
+  }
+  .detail-tagline {
+    font-size: 20px; font-weight: 300; color: var(--muted); margin-bottom: 20px;
+  }
+  .detail-desc {
+    font-size: 16px; color: #9ca3af; max-width: 680px; margin-bottom: 32px;
+    line-height: 1.75;
+  }
+  .detail-highlights {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px;
+  }
+  .highlight-chip {
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: 20px;
+    background: var(--surface2); border: 1px solid var(--border);
+    font-size: 12px; font-weight: 500; color: var(--text);
+  }
+  .highlight-chip::before {
+    content: '✦'; font-size: 8px;
+    color: var(--detail-accent, var(--accent));
+  }
+
+  .steps-section {
+    padding: 0 40px 80px; max-width: 1200px; margin: 0 auto;
+  }
+  .section-header {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+  }
+  .section-label {
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--detail-accent, var(--accent));
+  }
+  .section-line {
+    flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── SCREENSHOT GRID ── */
+  .screenshot-grid {
+    display: grid; gap: 16px; margin-bottom: 48px;
+  }
+  .screenshot-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .screenshot-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  @media (max-width: 900px) {
+    .screenshot-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .screenshot-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .screenshot-grid { grid-template-columns: 1fr !important; }
+    .tools-grid { padding: 0 20px 80px; }
+    .hero, .steps-section, .detail-hero { padding-left: 20px; padding-right: 20px; }
+    .nav { padding: 16px 20px; }
+    .filter-bar { padding: 0 20px; }
+  }
+
+  /* ── CARD: uniform height structure ── */
+  .screenshot-thumb {
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .screenshot-thumb:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+
+  /* Fixed-height image area — key fix for even boxes */
+  .thumb-placeholder {
+    display: block;
+    width: 100%;
+    height: 180px;               /* ← fixed height for all cards */
+    background: linear-gradient(135deg, var(--surface2) 0%, #1a1e28 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Empty / no-image state */
+  .thumb-placeholder.no-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .thumb-placeholder.no-img::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02), transparent 70%);
+  }
+
+  /* Image fills the fixed area */
+  .thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* ← fills the box, crops if needed */
+    object-position: top;     /* ← show top of screenshot */
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+  .thumb-img.hidden { display: none; }
+
+  .thumb-placeholder-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .thumb-placeholder-icon::after {
+    content: '⊞'; font-size: 16px; color: rgba(255,255,255,0.2);
+  }
+  .thumb-placeholder-hint {
+    font-size: 10px; color: rgba(255,255,255,0.15);
+    letter-spacing: 0.5px; position: relative; z-index: 1;
+  }
+
+  /* Label area at bottom — consistent height via min-height */
+  .thumb-label {
+    padding: 10px 14px;
+    font-size: 12px; color: var(--muted); line-height: 1.4;
+    min-height: 56px;           /* ← keeps label area even */
+    flex: 1;
+  }
+  .thumb-label strong {
+    display: block; font-size: 10px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--detail-accent, var(--accent));
+    margin-bottom: 2px; font-weight: 600;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px; max-width: 1000px; width: 90%;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); width: 32px; height: 32px;
+    border-radius: 50%; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; z-index: 2;
+  }
+  .modal-close:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+  .modal-img-wrap {
+    background: var(--surface2); border-radius: 12px; overflow: hidden;
+    margin-bottom: 16px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; min-height: 500px;
+  }
+  .modal-img-wrap img { width: 100%; height: auto; display: block; max-height: 75vh; object-fit: contain; }
+  .modal-img-placeholder {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 13px; padding: 40px 20px; text-align: center;
+  }
+  .modal-img-placeholder::before { content: '🖼'; font-size: 32px; opacity: 0.3; }
+  .modal-footer {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .modal-info { flex: 1; min-width: 0; }
+  .modal-label { font-size: 15px; color: var(--text); font-weight: 500; line-height: 1.4; }
+  .modal-sublabel { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .modal-nav { display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
+  .modal-nav-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.18s; user-select: none;
+  }
+  .modal-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); transform: scale(1.08); }
+  .modal-nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .modal-counter {
+    font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--muted);
+    white-space: nowrap; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 4px 12px;
+  }
+
+  .scroll-up {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--muted); cursor: pointer; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; opacity: 0; pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .scroll-up.visible { opacity: 1; pointer-events: auto; }
+  .scroll-up:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .footer {
+    padding: 40px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--muted); font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .step-section-title {
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--text); margin-bottom: 16px; letter-spacing: -0.3px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .tool-card { animation: fadeUp 0.5s ease both; }
+  .tool-card:nth-child(1)  { animation-delay: 0.05s; }
+  .tool-card:nth-child(2)  { animation-delay: 0.10s; }
+  .tool-card:nth-child(3)  { animation-delay: 0.15s; }
+  .tool-card:nth-child(4)  { animation-delay: 0.20s; }
+  .tool-card:nth-child(5)  { animation-delay: 0.25s; }
+  .tool-card:nth-child(6)  { animation-delay: 0.30s; }
+  .tool-card:nth-child(7)  { animation-delay: 0.35s; }
+  .tool-card:nth-child(8)  { animation-delay: 0.40s; }
+  .tool-card:nth-child(9)  { animation-delay: 0.45s; }
+  .tool-card:nth-child(10) { animation-delay: 0.50s; }
+  .tool-card:nth-child(11) { animation-delay: 0.55s; }
+</style>
+</head>
+<body>
+
+<div class="page active" id="main-page">
+  <nav class="nav">
+    <div class="nav-logo">AI<span>Boost</span></div>
+    <div class="nav-tag">2025 Edition</div>
+  </nav>
+
+  <section class="hero">
+    <span class="hero-eyebrow">11 Essential AI Platforms</span>
+    <h1>Top <em>AI Tools</em><br>Transforming Work</h1>
+    <p>Discover how to use the most powerful AI platforms for productivity — step-by-step guides for each tool.</p>
+  </section>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Tools</button>
+    <button class="filter-btn" data-filter="solve">Solve</button>
+    <button class="filter-btn" data-filter="research">Research</button>
+    <button class="filter-btn" data-filter="create">Create</button>
+    <button class="filter-btn" data-filter="music">Music</button>
+    <button class="filter-btn" data-filter="design">Design</button>
+    <button class="filter-btn" data-filter="deploy">Deploy</button>
+  </div>
+
+  <div class="tools-grid" id="tools-grid"></div>
+
+  <footer class="footer">AIBoost · 2025 Edition · 11 Essential AI Platforms</footer>
+</div>
+
+<div class="page" id="detail-page">
+  <nav class="nav">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+    <div class="nav-logo" id="detail-nav-name">AIBoost</div>
+    <div class="nav-tag" id="detail-nav-tag">GUIDE</div>
+  </nav>
+
+  <section class="detail-hero" id="detail-hero-content"></section>
+  <section class="steps-section" id="detail-steps"></section>
+
+  <footer class="footer">AIBoost · Step-by-step productivity guide</footer>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img-wrap" id="modal-img-wrap">
+      <div class="modal-img-placeholder">No image uploaded yet</div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-info">
+        <div class="modal-label" id="modal-label"></div>
+        <div class="modal-sublabel" id="modal-sublabel"></div>
+      </div>
+      <div class="modal-nav">
+        <button class="modal-nav-btn" id="modal-prev" onclick="modalNav(-1)" title="Previous step">&#8592;</button>
+        <span class="modal-counter" id="modal-counter">1 / 5</span>
+        <button class="modal-nav-btn" id="modal-next" onclick="modalNav(1)" title="Next step">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="scroll-up" id="scroll-up-btn" onclick="scrollToTop()" title="Scroll to top">↑</button>
+
+<script>
+const TOOLS = [
+  {
+    id: 'claude',
+    name: 'Claude.ai',
+    url: 'claude.ai',
+    tagline: 'Solving Bugs using claudeAi',
+    category: 'solve',
+    emoji: '🧠',
+    accent: '#00e5a0',
+    accentDim: 'rgba(0,229,160,0.1)',
+    accentBorder: 'rgba(0,229,160,0.2)',
+    glow: 'rgba(0,229,160,0.06)',
+    desc: 'An advanced AI assistant by Anthropic that helps with writing, coding, analysis, research, and creative tasks with nuanced, thoughtful responses.',
+    highlights: ['Advanced reasoning & nuanced analysis', 'Coding, writing & creative tasks', 'Long context & document understanding'],
+    steps: [
+      { label: "Code isn't working properly", img: 'images/claude1.png' },
+      { label: "Go to your IDE but can't find the bug", img: 'images/claude2.png' },
+      { label: 'Copy the code and paste it to claudeai', img: 'images/claude3.png' },
+      { label: 'Claudeai will give you the breakdown of the code and fix it', img: 'images/claude4.png' },
+      { label: 'Make changes on your code to work', img: 'images/claude5.png' },
+    ]
+  },
+  {
+    id: 'perplexity',
+    name: 'Perplexity.ai',
+    url: 'perplexity.ai',
+    tagline: 'Research using perplexity Ai',
+    category: 'research',
+    emoji: '🔍',
+    accent: '#0099ff',
+    accentDim: 'rgba(0,153,255,0.1)',
+    accentBorder: 'rgba(0,153,255,0.2)',
+    glow: 'rgba(0,153,255,0.06)',
+    desc: 'An AI-powered search engine that provides accurate, cited answers by searching the web in real-time — perfect for in-depth research and fact-checking.',
+    highlights: ['Real-time web search with citations', 'AI-powered research summaries', 'Follow-up questions & deep dives'],
+    steps: [
+      { label: 'Open perplexity.ai and type your research question', img: 'images/perplexity1.png' },
+      { label: 'Review cited sources in the answer panel', img: 'images/perplexity2.png' },
+      { label: 'Click sources to verify information', img: 'images/perplexity3.png' },
+      { label: 'Ask follow-up questions to go deeper', img: 'images/perplexity4.png' },
+    ]
+  },
+  {
+    id: 'syllaby',
+    name: 'Syllaby.io',
+    url: 'syllaby.io',
+    tagline: 'Faceless AI Videos',
+    category: 'create',
+    emoji: '🎬',
+    accent: '#a855f7',
+    accentDim: 'rgba(168,85,247,0.1)',
+    accentBorder: 'rgba(168,85,247,0.2)',
+    glow: 'rgba(168,85,247,0.06)',
+    desc: 'Create faceless video content powered by AI. Generate scripts, voiceovers, and full video productions without appearing on camera.',
+    highlights: ['Script generation from topics', 'AI voiceover & narration', 'Faceless video auto-production'],
+    steps: [
+      { label: 'Sign in to syllaby.io and Click generate', img: 'images/syllaby1.png' },
+      { label: 'Click faceless', img: 'images/syllaby2.png' },
+      { label: 'Choose the video style, generate script, modify video settings', img: 'images/syllaby3.png' },
+      { label: 'Scroll down for more modifications', img: 'images/syllaby4.png' },
+      { label: 'Hit Generate', img: 'images/syllaby5.png' },
+      { label: 'Wait for the rendering process', img: 'images/syllaby6.png' },
+      { label: 'Video is generated', img: 'images/syllaby7.png' },
+    ]
+  },
+  {
+    id: 'tripo',
+    name: 'tripo.ai',
+    url: 'tripo.ai',
+    tagline: 'Create 3D Models',
+    category: 'create',
+    emoji: '🌐',
+    accent: '#f59e0b',
+    accentDim: 'rgba(245,158,11,0.1)',
+    accentBorder: 'rgba(245,158,11,0.2)',
+    glow: 'rgba(245,158,11,0.06)',
+    desc: 'Capture and generate photorealistic 3D models using tripo ai. Turn photos or videos into stunning interactive 3D scenes in minutes.',
+    highlights: ['Text to 3D models', 'Image to 3D models', 'Interactive 3D model export'],
+    steps: [
+      { label: 'Sign up and go to generate image', img: 'images/tripo1.png' },
+      { label: 'Use prompt for image generation then generate', img: 'images/tripo2.png' },
+      { label: 'Hover to image and click high detail model', img: 'images/tripo3.png' },
+      { label: 'Click Generate model', img: 'images/tripo4.png' },
+      { label: 'Wait for it to load', img: 'images/tripo5.png' },
+      { label: 'Back position', img: 'images/tripo6.png' },
+      { label: 'Side position', img: 'images/tripo7.png' },
+      { label: 'Closeup position', img: 'images/tripo8.png' },
+    ]
+  },
+  {
+    id: 'suno',
+    name: 'Suno.ai',
+    url: 'suno.ai',
+    tagline: 'Compose Music',
+    category: 'music',
+    emoji: '🎵',
+    accent: '#ec4899',
+    accentDim: 'rgba(236,72,153,0.1)',
+    accentBorder: 'rgba(236,72,153,0.2)',
+    glow: 'rgba(236,72,153,0.06)',
+    desc: 'Generate full, original songs — complete with lyrics, instrumentation, and vocals — from a simple text prompt in any genre or style.',
+    highlights: ['Full song generation w/ vocals', 'Any genre from text prompt', 'Royalty-free original music'],
+    steps: [
+      { label: 'Go to suno.ai and sign in with your account', img: 'images/suno1.png' },
+      { label: 'Add prompt or click dice, then click create', img: 'images/suno2.png' },
+      { label: 'Choose custom mode to write your own lyrics', img: 'images/suno3.png' },
+    ]
+  },
+  {
+    id: 'higgsfield',
+    name: 'Higgsfield',
+    url: 'higgsfield.ai',
+    tagline: 'AI Visuals',
+    category: 'create',
+    emoji: '🎥',
+    accent: '#06b6d4',
+    accentDim: 'rgba(6,182,212,0.1)',
+    accentBorder: 'rgba(6,182,212,0.2)',
+    glow: 'rgba(6,182,212,0.06)',
+    desc: 'Create cinematic, high-quality AI video/Image content with advanced camera controls and character consistency for professional visual storytelling.',
+    highlights: ['Cinematic AI video creation', 'Image creation', 'Consistent character rendering'],
+    steps: [
+      { label: 'Open higgsfield.ai and SignIn and click Create', img: 'images/higgsfield1.png' },
+      { label: 'Add your prompt', img: 'images/higgsfield2.png' },
+      { label: 'Wait for it to load', img: 'images/higgsfield3.png' },
+      { label: 'Make changes if needed', img: 'images/higgsfield4.png' },
+    ]
+  },
+  {
+    id: 'submagic',
+    name: 'Submagic.co',
+    url: 'submagic.co',
+    tagline: 'Edit Videos',
+    category: 'create',
+    emoji: '✂️',
+    accent: '#10b981',
+    accentDim: 'rgba(16,185,129,0.1)',
+    accentBorder: 'rgba(16,185,129,0.2)',
+    glow: 'rgba(16,185,129,0.06)',
+    desc: 'AI-powered video editing with auto-generated captions, B-roll suggestions, and smart cuts that make short-form content creation effortless.',
+    highlights: ['Auto captions & subtitles', 'AI B-roll suggestions', 'Smart cuts for short-form'],
+    steps: [
+      { label: 'Go to submagic.co and click Create project', img: 'images/submagic1.png' },
+      { label: "For this demo we'll choose Magic clips", img: 'images/submagic2.png' },
+      { label: 'You can upload your own video or get it from YouTube', img: 'images/submagic3.png' },
+      { label: "We'll use YouTube for this demo", img: 'images/submagic4.png' },
+      { label: 'Get link', img: 'images/submagic5.png' },
+      { label: 'Paste Link and adjust to your liking', img: 'images/submagic6.png' },
+      { label: 'Wait for it to generate', img: 'images/submagic7.png' },
+      { label: 'Review your clips for Tiktok/Reels', img: 'images/submagic8.png' },
+    ]
+  },
+  {
+    id: 'reccloud',
+    name: 'RecCloud.com',
+    url: 'reccloud.com',
+    tagline: 'Summarize YouTube',
+    category: 'research',
+    emoji: '📝',
+    accent: '#f97316',
+    accentDim: 'rgba(249,115,22,0.1)',
+    accentBorder: 'rgba(249,115,22,0.2)',
+    glow: 'rgba(249,115,22,0.06)',
+    desc: 'Instantly summarize YouTube videos, transcribe recordings, and extract key insights from long-form video content using AI.',
+    highlights: ['YouTube video summarization', 'Audio transcription & notes', 'Key insight extraction'],
+    steps: [
+      { label: 'Signin and click Yt video summarizer', img: 'images/reccloud1.png' },
+      { label: 'Paste YouTube link and click summarize', img: 'images/reccloud2.png' },
+      { label: 'Wait for it to load', img: 'images/reccloud3.png' },
+      { label: 'Check the summary', img: 'images/reccloud4.png' },
+      { label: 'Check the transcript', img: 'images/reccloud5.png' },
+    ]
+  },
+  {
+    id: 'canva',
+    name: 'Canva.com',
+    url: 'canva.com',
+    tagline: 'Design Graphics',
+    category: 'design',
+    emoji: '🎨',
+    accent: '#8b5cf6',
+    accentDim: 'rgba(139,92,246,0.1)',
+    accentBorder: 'rgba(139,92,246,0.2)',
+    glow: 'rgba(139,92,246,0.06)',
+    desc: 'The world\'s most popular AI-powered design platform. Create stunning graphics, presentations, social media content, and print materials with ease.',
+    highlights: ['AI image & graphic generation', '1000+ templates & assets', 'Brand kit & collaboration'],
+    steps: [
+      { label: 'Open canva app and click Canva AI', img: 'images/canva1.png' },
+      { label: 'Add your prompt', img: 'images/canva2.png' },
+      { label: 'It will ask you for more information', img: 'images/canva3.png' },
+      { label: 'Just keep answering them for best result', img: 'images/canva4.png' },
+      { label: 'Pick from the result', img: 'images/canva5.png' },
+      { label: 'Customize it from your liking', img: 'images/canva6.png' },
+    ]
+  },
+  {
+    id: 'elevenlabs',
+    name: 'ElevenLabs.io',
+    url: 'elevenlabs.io',
+    tagline: 'Clone Voices',
+    category: 'create',
+    emoji: '🔊',
+    accent: '#f43f5e',
+    accentDim: 'rgba(244,63,94,0.1)',
+    accentBorder: 'rgba(244,63,94,0.2)',
+    glow: 'rgba(244,63,94,0.06)',
+    desc: 'The leading AI voice platform — clone any voice, generate realistic speech in 29 languages, and create professional audio content at scale.',
+    highlights: ['Voice cloning in minutes', '29-language TTS support', 'API for audio at scale'],
+    steps: [
+      { label: 'Create an account at elevenlabs.io and click clone your own voice', img: 'images/elevenlabs1.png' },
+      { label: 'Click instant clone voice', img: 'images/elevenlabs2.png' },
+      { label: 'Record audio', img: 'images/elevenlabs3.png' },
+      { label: 'Click next once done with recording', img: 'images/elevenlabs4.png' },
+      { label: 'Save your voice', img: 'images/elevenlabs5.png' },
+    ]
+  },
+  {
+    id: 'openclaw',
+    name: 'OpenClaw',
+    url: 'openclawengine.xyz',
+    tagline: 'Deploy AI Workflows',
+    category: 'deploy',
+    emoji: '⚙️',
+    accent: '#64748b',
+    accentDim: 'rgba(100,116,139,0.1)',
+    accentBorder: 'rgba(100,116,139,0.2)',
+    glow: 'rgba(100,116,139,0.06)',
+    desc: 'Deploy and manage OpenClaw engine instances for AI-powered automation, enabling scalable and customizable AI workflow deployments.',
+    highlights: ['OpenClaw engine deployment', 'AI workflow automation', 'Scalable instance management'],
+    steps: [
+      { label: 'Go to openclaw.com and copy the prompt', img: 'images/openclaw1.png' },
+      { label: 'Go to your terminal and paste the copied text', img: 'images/openclaw2.png' },
+      { label: 'Wait for it to install', img: 'images/openclaw3.png' },
+      { label: 'Open openclaw onboard', img: 'images/openclaw4.png' },
+      { label: 'Configure', img: 'images/openclaw5.png' },
+      { label: 'Configure', img: 'images/openclaw6.png' },
+      { label: 'Configure', img: 'images/openclaw7.png' },
+      { label: 'Configure', img: 'images/openclaw8.png' },
+      { label: 'Configure', img: 'images/openclaw9.png' },
+      { label: 'Go to Telegram and find BotFather', img: 'images/openclaw10.png' },
+      { label: 'Read all the instruction and follow', img: 'images/openclaw11.png' },
+      { label: 'Go to your bot and get the configuration code', img: 'images/openclaw12.png' },
+      { label: 'Copy the prompt and paste to another terinal', img: 'images/openclaw13.png' },
+      { label: 'Now your bot should work', img: 'images/openclaw14.png' },
+      { label: 'You can give it a job like this', img: 'images/openclaw15.png' },
+    ]
+  },
+];
+
+function renderGrid(filter = 'all') {
+  const grid = document.getElementById('tools-grid');
+  const filtered = filter === 'all' ? TOOLS : TOOLS.filter(t => t.category === filter);
+  grid.innerHTML = filtered.map((t, i) => `
+    <div class="tool-card" style="
+      --card-glow: ${t.glow};
+      --card-accent: ${t.accentBorder};
+      --card-accent-color: ${t.accent};
+      --card-icon-bg: ${t.accentDim};
+      --card-icon-border: ${t.accentBorder};
+      animation-delay: ${i * 0.06}s;
+    " onclick="openDetail('${t.id}')">
+      <span class="card-number">${String(i+1).padStart(2,'0')} — ${t.category.toUpperCase()}</span>
+      <div class="card-icon">${t.emoji}</div>
+      <div class="card-title">${t.name}</div>
+      <div class="card-tagline">"${t.tagline}"</div>
+      <div class="card-desc">${t.desc}</div>
+      <div class="card-tags">
+        ${t.highlights.map(h => `<span class="card-tag">${h}</span>`).join('')}
+      </div>
+      <button class="card-btn">View Guide →</button>
+    </div>
+  `).join('');
+}
+
+function openDetail(id) {
+  const t = TOOLS.find(x => x.id === id);
+  if (!t) return;
+
+  document.getElementById('detail-page').style.setProperty('--detail-accent', t.accent);
+  document.getElementById('detail-nav-name').textContent = t.name;
+  document.getElementById('detail-nav-tag').textContent = t.tagline.toUpperCase();
+
+  document.getElementById('detail-hero-content').innerHTML = `
+    <div class="detail-badge">${t.emoji} ${t.name}</div>
+    <div class="detail-title">${t.tagline}</div>
+    <div class="detail-tagline">${t.url}</div>
+    <div class="detail-desc">${t.desc}</div>
+    <div class="detail-highlights">
+      ${t.highlights.map(h => `<span class="highlight-chip">${h}</span>`).join('')}
+    </div>
+  `;
+
+  const stepsHtml = `
+    <div class="section-header">
+      <span class="section-label">Step-by-Step Guide</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="screenshot-grid cols-3" data-step="How to Use ${t.name}">
+      ${t.steps.map((s, idx) => `
+        <div class="screenshot-thumb" onclick="openModal(this)" data-label="${s.label}" data-img="${s.img}">
+          <div class="thumb-placeholder no-img" id="ph-${t.id}-${idx}">
+            <span class="thumb-placeholder-icon"></span>
+            <span class="thumb-placeholder-hint">No image yet</span>
+          </div>
+          <div class="thumb-label">
+            <strong>Step ${idx+1}</strong>${s.label}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  document.getElementById('detail-steps').innerHTML = stepsHtml;
+
+  t.steps.forEach((s, idx) => {
+    const ph = document.getElementById(`ph-${t.id}-${idx}`);
+    if (!ph) return;
+    const img = new Image();
+    img.onload = () => {
+      ph.classList.remove('no-img');
+      ph.innerHTML = '';
+      img.className = 'thumb-img';
+      img.alt = `Step ${idx + 1}`;
+      ph.appendChild(img);
+    };
+    img.src = s.img;
+  });
+
+  document.getElementById('main-page').classList.remove('active');
+  document.getElementById('detail-page').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function goBack() {
+  document.getElementById('detail-page').classList.remove('active');
+  document.getElementById('main-page').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+let modalThumbs = [];
+let modalIndex  = 0;
+
+function loadModalAt(index) {
+  const el    = modalThumbs[index];
+  const label = el.getAttribute('data-label');
+  const imgSrc = el.getAttribute('data-img');
+  const wrap  = document.getElementById('modal-img-wrap');
+  const existingImg = el.querySelector('.thumb-img');
+  const total = modalThumbs.length;
+
+  if (existingImg && existingImg.complete && existingImg.naturalWidth > 0) {
+    wrap.innerHTML = `<img src="${existingImg.src}" alt="${label}">`;
+  } else if (imgSrc) {
+    wrap.innerHTML = `<div class="modal-img-placeholder">Loading…</div>`;
+    const testImg = new Image();
+    testImg.onload = () => { wrap.innerHTML = `<img src="${imgSrc}" alt="${label}">`; };
+    testImg.onerror = () => {
+      wrap.innerHTML = `<div class="modal-img-placeholder">No image yet<br><small style="opacity:0.4">${imgSrc}</small></div>`;
+    };
+    testImg.src = imgSrc;
+  } else {
+    wrap.innerHTML = `<div class="modal-img-placeholder">No image uploaded yet</div>`;
+  }
+
+  const thumbLabel = el.querySelector('.thumb-label strong');
+  document.getElementById('modal-label').textContent = label;
+  document.getElementById('modal-sublabel').textContent = thumbLabel ? thumbLabel.textContent : '';
+  document.getElementById('modal-counter').textContent = `${index + 1} / ${total}`;
+  document.getElementById('modal-prev').disabled = index === 0;
+  document.getElementById('modal-next').disabled = index === total - 1;
+}
+
+function openModal(el) {
+  modalThumbs = Array.from(document.querySelectorAll('#detail-steps .screenshot-thumb'));
+  modalIndex  = modalThumbs.indexOf(el);
+  if (modalIndex === -1) modalIndex = 0;
+  loadModalAt(modalIndex);
+  document.getElementById('modal').classList.add('open');
+}
+
+function modalNav(dir) {
+  const next = modalIndex + dir;
+  if (next < 0 || next >= modalThumbs.length) return;
+  modalIndex = next;
+  loadModalAt(modalIndex);
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('modal').classList.contains('open')) return;
+  if (e.key === 'Escape')      closeModal();
+  if (e.key === 'ArrowLeft')   modalNav(-1);
+  if (e.key === 'ArrowRight')  modalNav(1);
+});
+
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scroll-up-btn');
+  btn.classList.toggle('visible', window.scrollY > 300);
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGrid(btn.dataset.filter);
+  });
+});
+
+renderGrid();
+</script>
+</body>
+</html>
