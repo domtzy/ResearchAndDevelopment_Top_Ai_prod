@@ -4,29 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIBoost — Top AI Tools 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0c10;
-    --surface: #111318;
-    --surface2: #181c24;
-    --border: rgba(255,255,255,0.07);
-    --text: #e8eaf0;
-    --muted: #6b7280;
-    --accent: #00e5a0;
-    --accent2: #0099ff;
-    --accent3: #ff4d6d;
-    --glow: rgba(0,229,160,0.15);
+    --bg: #fdf8f0;
+    --surface: #ffffff;
+    --surface2: #f5ede0;
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1208;
+    --muted: #251808;
+    --ink: #2a1f0e;
+
+    --tomato: #e8442a;
+    --tomato-light: #fde8e4;
+    --sky: #1a7fc1;
+    --sky-light: #dceef8;
+    --mint: #1a9e72;
+    --mint-light: #d4f0e5;
+    --grape: #7c3aed;
+    --grape-light: #ede9ff;
+    --honey: #d97706;
+    --honey-light: #fef3c7;
+    --rose: #db2777;
+    --rose-light: #fce7f3;
+    --teal: #0891b2;
+    --teal-light: #cff0fa;
+    --orange: #ea580c;
+    --orange-light: #ffedd5;
+    --slate: #475569;
+    --slate-light: #e2e8f0;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(232,68,42,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(124,58,237,0.04) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Ccircle cx='30' cy='30' r='0.6' fill='%23c4a882' opacity='0.3'/%3E%3C/svg%3E");
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.65;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -34,192 +54,231 @@
   .page { display: none; min-height: 100vh; }
   .page.active { display: block; }
 
+  /* NAV */
   .nav {
     position: sticky; top: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 40px;
-    background: rgba(10,12,16,0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    background: rgba(253,248,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--ink);
   }
   .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 22px;
+    font-family: 'Fraunces', serif;
+    font-weight: 900; font-size: 24px;
     letter-spacing: -0.5px;
-    color: var(--accent);
+    color: var(--ink);
   }
-  .nav-logo span { color: var(--text); }
+  .nav-logo em { font-style: italic; color: var(--tomato); }
   .nav-tag {
-    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--muted);
-    border: 1px solid var(--border);
-    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--muted);
+    border: 1.5px solid var(--border);
+    border-radius: 4px; padding: 4px 10px;
+    background: var(--surface);
   }
 
+  /* HERO */
   .hero {
-    padding: 100px 40px 60px;
+    padding: 80px 40px 50px;
     max-width: 900px; margin: 0 auto;
     text-align: center;
+    position: relative;
   }
   .hero-eyebrow {
     display: inline-block;
-    font-size: 11px; letter-spacing: 2px; font-weight: 600;
-    text-transform: uppercase; color: var(--accent);
-    background: rgba(0,229,160,0.08);
-    border: 1px solid rgba(0,229,160,0.2);
-    border-radius: 20px; padding: 5px 14px; margin-bottom: 24px;
+    font-size: 11px; letter-spacing: 2px; font-weight: 500; text-transform: uppercase;
+    color: var(--tomato);
+    background: var(--tomato-light);
+    border: 1.5px solid var(--tomato);
+    border-radius: 4px; padding: 5px 14px; margin-bottom: 28px;
   }
   .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(38px, 6vw, 72px);
-    font-weight: 800; line-height: 1.05;
-    letter-spacing: -2px; margin-bottom: 20px;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 7vw, 78px);
+    font-weight: 900; line-height: 1.0;
+    letter-spacing: -2px; margin-bottom: 24px;
+    color: var(--ink);
   }
   .hero h1 em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-style: italic;
+    color: var(--tomato);
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute; bottom: 6px; left: 0; right: 0; height: 6px;
+    background: var(--honey);
+    border-radius: 2px;
+    z-index: -1;
+    transform: rotate(-0.5deg);
   }
   .hero p {
-    font-size: 17px; color: var(--muted); max-width: 520px;
-    margin: 0 auto 48px; font-weight: 300;
+    font-size: 17px; color: var(--muted); max-width: 480px;
+    margin: 0 auto 52px; font-weight: 300; line-height: 1.75;
   }
 
+  /* DECO blobs */
+  .hero-deco {
+    position: absolute; pointer-events: none; z-index: 0;
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: rgba(0,0,0,0.04); font-size: 120px; font-weight: 900;
+    user-select: none;
+  }
+  .hero-deco.left  { left: -20px; top: 40px; transform: rotate(-8deg); }
+  .hero-deco.right { right: -10px; top: 60px; transform: rotate(6deg); }
+
+  /* FILTER BAR */
   .filter-bar {
     display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
-    margin-bottom: 60px; padding: 0 40px;
+    margin-bottom: 56px; padding: 0 40px;
   }
   .filter-btn {
-    padding: 7px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
-    border: 1px solid var(--border); background: transparent; color: var(--muted);
-    cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+    padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500;
+    border: 1.5px solid var(--border);
+    background: var(--surface); color: var(--muted);
+    cursor: pointer; transition: all 0.18s;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.06);
   }
-  .filter-btn:hover, .filter-btn.active {
-    background: rgba(0,229,160,0.1); border-color: rgba(0,229,160,0.3);
-    color: var(--accent);
+  .filter-btn:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-1px); box-shadow: 3px 3px 0 rgba(0,0,0,0.10); }
+  .filter-btn.active {
+    background: var(--ink); border-color: var(--ink); color: #fff;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
   }
 
+  /* TOOLS GRID */
   .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px; padding: 0 40px 100px; max-width: 1200px; margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 24px; padding: 0 40px 100px; max-width: 1200px; margin: 0 auto;
   }
 
   .tool-card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px;
+    border: 2px solid var(--ink);
+    border-radius: 16px; padding: 28px 26px;
     cursor: pointer; position: relative; overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  .tool-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 70% 20%, var(--card-glow, rgba(0,229,160,0.06)), transparent 60%);
-    pointer-events: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; flex-direction: column;
+    box-shadow: 4px 4px 0 var(--ink);
   }
   .tool-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255,255,255,0.15);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--card-accent, rgba(0,229,160,0.2));
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
   }
+  .tool-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  /* colored top strip */
+  .tool-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+    background: var(--card-accent, var(--tomato));
+    border-radius: 14px 14px 0 0;
+  }
+
   .card-number {
-    font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: var(--card-accent-color, var(--accent));
-    margin-bottom: 18px; display: block;
+    font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px; margin-top: 8px; display: block;
   }
   .card-icon {
-    width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px;
+    width: 52px; height: 52px; border-radius: 12px; margin-bottom: 16px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    background: var(--card-icon-bg, rgba(0,229,160,0.1));
-    border: 1px solid var(--card-icon-border, rgba(0,229,160,0.2));
+    font-size: 24px;
+    background: var(--card-icon-bg, #fde8e4);
+    border: 2px solid var(--card-accent, var(--tomato));
   }
   .card-title {
-    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700;
-    margin-bottom: 4px; letter-spacing: -0.3px;
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700;
+    margin-bottom: 3px; letter-spacing: -0.3px; color: var(--ink);
   }
   .card-tagline {
-    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
-    color: var(--card-accent-color, var(--accent));
-    text-transform: uppercase; margin-bottom: 12px;
+    font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--card-accent, var(--tomato));
+    margin-bottom: 14px;
   }
   .card-desc {
-    font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px;
+    font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 20px;
   }
   .card-tags {
     display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;
   }
   .card-tag {
-    font-size: 11px; padding: 3px 10px; border-radius: 12px;
-    background: rgba(255,255,255,0.05); color: var(--muted);
-    border: 1px solid var(--border);
+    font-size: 11px; padding: 4px 10px; border-radius: 100px;
+    background: var(--card-icon-bg, #fde8e4);
+    color: var(--card-accent, var(--tomato));
+    border: 1px solid var(--card-accent, var(--tomato));
+    font-weight: 500;
   }
   .card-btn {
     width: 100%; padding: 11px;
-    background: transparent;
-    border: 1px solid var(--card-accent-color, var(--accent));
-    color: var(--card-accent-color, var(--accent));
-    border-radius: 8px; font-size: 13px; font-weight: 600;
+    background: var(--card-accent, var(--tomato));
+    border: 2px solid var(--card-accent, var(--tomato));
+    color: #fff;
+    border-radius: 8px; font-size: 13px; font-weight: 500;
     font-family: 'DM Sans', sans-serif; cursor: pointer;
-    transition: all 0.2s; letter-spacing: 0.3px;
+    transition: all 0.15s;
     display: flex; align-items: center; justify-content: center; gap: 6px;
     margin-top: auto;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
   }
   .card-btn:hover {
-    background: var(--card-accent-color, var(--accent));
-    color: #000;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.18);
   }
 
-  #detail-page .nav {
-    display: flex; align-items: center; gap: 16px;
-  }
+  /* DETAIL */
+  #detail-page .nav { display: flex; align-items: center; gap: 16px; }
   .back-btn {
     display: flex; align-items: center; gap: 8px;
-    background: transparent; border: 1px solid var(--border);
-    color: var(--muted); padding: 8px 16px; border-radius: 8px;
+    background: var(--surface); border: 1.5px solid var(--ink);
+    color: var(--ink); padding: 8px 16px; border-radius: 8px;
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
-    cursor: pointer; transition: all 0.2s;
+    cursor: pointer; transition: all 0.15s;
+    box-shadow: 2px 2px 0 var(--ink);
   }
-  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .back-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
 
   .detail-hero {
     padding: 60px 40px 40px; max-width: 900px; margin: 0 auto;
   }
   .detail-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11px; letter-spacing: 2px; font-weight: 600;
-    text-transform: uppercase; color: var(--detail-accent, var(--accent));
-    background: rgba(0,229,160,0.08);
-    border: 1px solid rgba(0,229,160,0.2);
-    border-radius: 20px; padding: 5px 14px; margin-bottom: 20px;
+    font-size: 11px; letter-spacing: 1.5px; font-weight: 600; text-transform: uppercase;
+    color: var(--detail-accent, var(--tomato));
+    background: var(--detail-accent-light, var(--tomato-light));
+    border: 1.5px solid var(--detail-accent, var(--tomato));
+    border-radius: 4px; padding: 5px 14px; margin-bottom: 20px;
   }
   .detail-title {
-    font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 56px);
-    font-weight: 800; letter-spacing: -1.5px; margin-bottom: 8px;
+    font-family: 'Fraunces', serif; font-size: clamp(30px, 5vw, 52px);
+    font-weight: 900; letter-spacing: -1.5px; margin-bottom: 8px; color: var(--ink);
   }
   .detail-tagline {
-    font-size: 20px; font-weight: 300; color: var(--muted); margin-bottom: 20px;
+    font-size: 15px; font-weight: 400; color: var(--muted); margin-bottom: 20px;
+    text-decoration: underline; text-underline-offset: 3px;
   }
   .detail-desc {
-    font-size: 16px; color: #9ca3af; max-width: 680px; margin-bottom: 32px;
-    line-height: 1.75;
+    font-size: 16px; color: var(--muted); max-width: 620px; margin-bottom: 32px;
+    line-height: 1.8;
   }
   .detail-highlights {
     display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px;
   }
   .highlight-chip {
     display: flex; align-items: center; gap: 6px;
-    padding: 7px 14px; border-radius: 20px;
-    background: var(--surface2); border: 1px solid var(--border);
-    font-size: 12px; font-weight: 500; color: var(--text);
+    padding: 7px 14px; border-radius: 100px;
+    background: var(--surface); border: 1.5px solid var(--ink);
+    font-size: 12px; font-weight: 500; color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
   }
   .highlight-chip::before {
-    content: '✦'; font-size: 8px;
-    color: var(--detail-accent, var(--accent));
+    content: '✦'; font-size: 9px;
+    color: var(--detail-accent, var(--tomato));
   }
 
   .steps-section {
@@ -229,17 +288,16 @@
     display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
   }
   .section-label {
-    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: var(--detail-accent, var(--accent));
+    font-family: 'Fraunces', serif; font-size: 14px; font-weight: 700; font-style: italic;
+    color: var(--ink); white-space: nowrap;
   }
   .section-line {
-    flex: 1; height: 1px; background: var(--border);
+    flex: 1; height: 2px; background: var(--ink);
+    border-radius: 2px;
   }
 
-  /* ── SCREENSHOT GRID ── */
   .screenshot-grid {
-    display: grid; gap: 16px; margin-bottom: 48px;
+    display: grid; gap: 20px; margin-bottom: 48px;
   }
   .screenshot-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
   .screenshot-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
@@ -256,113 +314,86 @@
     .filter-bar { padding: 0 20px; }
   }
 
-  /* ── CARD: uniform height structure ── */
   .screenshot-thumb {
-    cursor: pointer;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
+    cursor: pointer; border-radius: 12px; overflow: hidden;
+    border: 2px solid var(--ink); background: var(--surface);
+    transition: transform 0.18s, box-shadow 0.18s;
+    display: flex; flex-direction: column;
+    box-shadow: 3px 3px 0 var(--ink);
   }
   .screenshot-thumb:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255,255,255,0.15);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
   }
 
-  /* Fixed-height image area — key fix for even boxes */
   .thumb-placeholder {
-    display: block;
-    width: 100%;
-    height: 180px;               /* ← fixed height for all cards */
-    background: linear-gradient(135deg, var(--surface2) 0%, #1a1e28 100%);
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
+    display: block; width: 100%; height: 180px;
+    background: var(--surface2);
+    border-bottom: 2px solid var(--ink);
+    position: relative; overflow: hidden; flex-shrink: 0;
   }
-
-  /* Empty / no-image state */
   .thumb-placeholder.no-img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  .thumb-placeholder.no-img::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02), transparent 70%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 10px;
   }
 
-  /* Image fills the fixed area */
   .thumb-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;        /* ← fills the box, crops if needed */
-    object-position: top;     /* ← show top of screenshot */
-    display: block;
-    position: absolute;
-    inset: 0;
+    width: 100%; height: 100%; object-fit: cover; object-position: top;
+    display: block; position: absolute; inset: 0;
   }
   .thumb-img.hidden { display: none; }
 
   .thumb-placeholder-icon {
     width: 36px; height: 36px; border-radius: 8px;
-    background: rgba(255,255,255,0.05);
-    border: 1px dashed rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.05);
+    border: 1.5px dashed rgba(0,0,0,0.2);
     display: flex; align-items: center; justify-content: center;
     position: relative; z-index: 1;
   }
   .thumb-placeholder-icon::after {
-    content: '⊞'; font-size: 16px; color: rgba(255,255,255,0.2);
+    content: '⊞'; font-size: 16px; color: rgba(0,0,0,0.2);
   }
   .thumb-placeholder-hint {
-    font-size: 10px; color: rgba(255,255,255,0.15);
+    font-size: 10px; color: rgba(0,0,0,0.2);
     letter-spacing: 0.5px; position: relative; z-index: 1;
   }
 
-  /* Label area at bottom — consistent height via min-height */
   .thumb-label {
     padding: 10px 14px;
-    font-size: 12px; color: var(--muted); line-height: 1.4;
-    min-height: 56px;           /* ← keeps label area even */
-    flex: 1;
+    font-size: 12.5px; color: var(--muted); line-height: 1.5;
+    min-height: 56px; flex: 1; background: var(--surface);
   }
   .thumb-label strong {
-    display: block; font-size: 10px; letter-spacing: 1px;
-    text-transform: uppercase; color: var(--detail-accent, var(--accent));
-    margin-bottom: 2px; font-weight: 600;
+    display: block; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--detail-accent, var(--tomato));
+    margin-bottom: 3px; font-weight: 600;
   }
 
-  /* ── MODAL ── */
+  /* MODAL */
   .modal-overlay {
     display: none; position: fixed; inset: 0; z-index: 999;
-    background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+    background: rgba(26,18,8,0.85); backdrop-filter: blur(6px);
     align-items: center; justify-content: center;
   }
   .modal-overlay.open { display: flex; }
   .modal-box {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 20px; padding: 32px; max-width: 1000px; width: 90%;
-    position: relative;
+    background: var(--surface); border: 2px solid var(--ink);
+    border-radius: 16px; padding: 28px; max-width: 1000px; width: 90%;
+    position: relative; box-shadow: 8px 8px 0 var(--ink);
   }
   .modal-close {
-    position: absolute; top: 16px; right: 16px;
-    background: var(--surface2); border: 1px solid var(--border);
-    color: var(--muted); width: 32px; height: 32px;
-    border-radius: 50%; cursor: pointer; font-size: 16px;
+    position: absolute; top: 14px; right: 14px;
+    background: var(--surface2); border: 1.5px solid var(--ink);
+    color: var(--ink); width: 32px; height: 32px;
+    border-radius: 50%; cursor: pointer; font-size: 15px;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; z-index: 2;
+    transition: all 0.15s; z-index: 2;
+    box-shadow: 2px 2px 0 var(--ink);
   }
-  .modal-close:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+  .modal-close:hover { background: var(--ink); color: #fff; }
   .modal-img-wrap {
-    background: var(--surface2); border-radius: 12px; overflow: hidden;
-    margin-bottom: 16px; border: 1px solid var(--border);
+    background: var(--surface2); border-radius: 10px; overflow: hidden;
+    margin-bottom: 16px; border: 1.5px solid var(--border);
     display: flex; align-items: center; justify-content: center; min-height: 500px;
   }
   .modal-img-wrap img { width: 100%; height: auto; display: block; max-height: 75vh; object-fit: contain; }
@@ -370,93 +401,82 @@
     display: flex; flex-direction: column; align-items: center; gap: 8px;
     color: var(--muted); font-size: 13px; padding: 40px 20px; text-align: center;
   }
-  .modal-img-placeholder::before { content: '🖼'; font-size: 32px; opacity: 0.3; }
-  .modal-footer {
-    display: flex; align-items: center; gap: 12px;
-  }
+  .modal-img-placeholder::before { content: '🖼'; font-size: 32px; opacity: 0.25; }
+  .modal-footer { display: flex; align-items: center; gap: 12px; }
   .modal-info { flex: 1; min-width: 0; }
-  .modal-label { font-size: 15px; color: var(--text); font-weight: 500; line-height: 1.4; }
-  .modal-sublabel { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .modal-label { font-size: 14px; color: var(--ink); font-weight: 500; line-height: 1.5; }
+  .modal-sublabel { font-size: 11px; color: var(--muted); margin-top: 2px; letter-spacing: 0.5px; text-transform: uppercase; }
   .modal-nav { display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
   .modal-nav-btn {
     width: 38px; height: 38px; border-radius: 50%;
-    background: var(--surface2); border: 1px solid var(--border);
-    color: var(--muted); cursor: pointer; font-size: 16px;
+    background: var(--surface); border: 1.5px solid var(--ink);
+    color: var(--ink); cursor: pointer; font-size: 16px;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.18s; user-select: none;
+    transition: all 0.15s; user-select: none;
+    box-shadow: 2px 2px 0 var(--ink);
   }
-  .modal-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); transform: scale(1.08); }
-  .modal-nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .modal-nav-btn:hover:not(:disabled) { background: var(--ink); color: #fff; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 rgba(0,0,0,0.3); }
+  .modal-nav-btn:disabled { opacity: 0.2; cursor: default; box-shadow: none; }
   .modal-counter {
     font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--muted);
-    white-space: nowrap; background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 20px; padding: 4px 12px;
+    white-space: nowrap; background: var(--surface2); border: 1.5px solid var(--border);
+    border-radius: 100px; padding: 4px 12px; font-family: 'DM Sans', sans-serif;
   }
 
   .scroll-up {
     position: fixed; bottom: 28px; right: 28px; z-index: 200;
     width: 44px; height: 44px; border-radius: 50%;
-    background: var(--surface); border: 1px solid var(--border);
-    color: var(--muted); cursor: pointer; font-size: 18px;
+    background: var(--ink); border: 2px solid var(--ink);
+    color: #fff; cursor: pointer; font-size: 18px;
     display: flex; align-items: center; justify-content: center;
     transition: all 0.2s; opacity: 0; pointer-events: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
   }
   .scroll-up.visible { opacity: 1; pointer-events: auto; }
-  .scroll-up:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .scroll-up:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.3); }
 
   .footer {
-    padding: 40px; border-top: 1px solid var(--border);
+    padding: 40px; border-top: 2px solid var(--ink);
     text-align: center; color: var(--muted); font-size: 12px;
-    letter-spacing: 0.5px;
-  }
-
-  body::after {
-    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    opacity: 0.4;
-  }
-
-  .step-section-title {
-    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
-    color: var(--text); margin-bottom: 16px; letter-spacing: -0.3px;
+    letter-spacing: 1px; font-weight: 400; text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
   }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .tool-card { animation: fadeUp 0.5s ease both; }
-  .tool-card:nth-child(1)  { animation-delay: 0.05s; }
-  .tool-card:nth-child(2)  { animation-delay: 0.10s; }
-  .tool-card:nth-child(3)  { animation-delay: 0.15s; }
-  .tool-card:nth-child(4)  { animation-delay: 0.20s; }
-  .tool-card:nth-child(5)  { animation-delay: 0.25s; }
-  .tool-card:nth-child(6)  { animation-delay: 0.30s; }
-  .tool-card:nth-child(7)  { animation-delay: 0.35s; }
-  .tool-card:nth-child(8)  { animation-delay: 0.40s; }
-  .tool-card:nth-child(9)  { animation-delay: 0.45s; }
-  .tool-card:nth-child(10) { animation-delay: 0.50s; }
-  .tool-card:nth-child(11) { animation-delay: 0.55s; }
+  .tool-card { animation: fadeUp 0.45s ease both; }
+  .tool-card:nth-child(1)  { animation-delay: 0.04s; }
+  .tool-card:nth-child(2)  { animation-delay: 0.08s; }
+  .tool-card:nth-child(3)  { animation-delay: 0.12s; }
+  .tool-card:nth-child(4)  { animation-delay: 0.16s; }
+  .tool-card:nth-child(5)  { animation-delay: 0.20s; }
+  .tool-card:nth-child(6)  { animation-delay: 0.24s; }
+  .tool-card:nth-child(7)  { animation-delay: 0.28s; }
+  .tool-card:nth-child(8)  { animation-delay: 0.32s; }
+  .tool-card:nth-child(9)  { animation-delay: 0.36s; }
+  .tool-card:nth-child(10) { animation-delay: 0.40s; }
+  .tool-card:nth-child(11) { animation-delay: 0.44s; }
 </style>
 </head>
 <body>
 
 <div class="page active" id="main-page">
   <nav class="nav">
-    <div class="nav-logo">AI<span>Boost</span></div>
+    <div class="nav-logo">AI<em>Boost</em></div>
     <div class="nav-tag">2025 Edition</div>
   </nav>
 
   <section class="hero">
-    <span class="hero-eyebrow">11 Essential AI Platforms</span>
-    <h1>Top <em>AI Tools</em><br>Transforming Work</h1>
-    <p>Discover how to use the most powerful AI platforms for productivity — step-by-step guides for each tool.</p>
+    <span class="hero-eyebrow">11 AI Tools, Step by Step</span>
+    <h1>The <em>AI Tools</em><br>Actually Worth Using</h1>
+    <p>Simple, clear guides showing you exactly how to use today's best AI tools — one step at a time.</p>
   </section>
 
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All Tools</button>
-    <button class="filter-btn" data-filter="solve">Solve</button>
+    <button class="filter-btn" data-filter="solve">Fix Code</button>
     <button class="filter-btn" data-filter="research">Research</button>
     <button class="filter-btn" data-filter="create">Create</button>
     <button class="filter-btn" data-filter="music">Music</button>
@@ -466,20 +486,20 @@
 
   <div class="tools-grid" id="tools-grid"></div>
 
-  <footer class="footer">AIBoost · 2025 Edition · 11 Essential AI Platforms</footer>
+  <footer class="footer">AIBoost · 2025 Edition · 11 AI tools, made simple</footer>
 </div>
 
 <div class="page" id="detail-page">
   <nav class="nav">
     <button class="back-btn" onclick="goBack()">← Back</button>
-    <div class="nav-logo" id="detail-nav-name">AIBoost</div>
+    <div class="nav-logo" id="detail-nav-name">AI<em>Boost</em></div>
     <div class="nav-tag" id="detail-nav-tag">GUIDE</div>
   </nav>
 
   <section class="detail-hero" id="detail-hero-content"></section>
   <section class="steps-section" id="detail-steps"></section>
 
-  <footer class="footer">AIBoost · Step-by-step productivity guide</footer>
+  <footer class="footer">AIBoost · Step-by-step guides for real people</footer>
 </div>
 
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
@@ -494,15 +514,15 @@
         <div class="modal-sublabel" id="modal-sublabel"></div>
       </div>
       <div class="modal-nav">
-        <button class="modal-nav-btn" id="modal-prev" onclick="modalNav(-1)" title="Previous step">&#8592;</button>
+        <button class="modal-nav-btn" id="modal-prev" onclick="modalNav(-1)" title="Previous">&#8592;</button>
         <span class="modal-counter" id="modal-counter">1 / 5</span>
-        <button class="modal-nav-btn" id="modal-next" onclick="modalNav(1)" title="Next step">&#8594;</button>
+        <button class="modal-nav-btn" id="modal-next" onclick="modalNav(1)" title="Next">&#8594;</button>
       </div>
     </div>
   </div>
 </div>
 
-<button class="scroll-up" id="scroll-up-btn" onclick="scrollToTop()" title="Scroll to top">↑</button>
+<button class="scroll-up" id="scroll-up-btn" onclick="scrollToTop()" title="Back to top">↑</button>
 
 <script>
 const TOOLS = [
@@ -510,246 +530,224 @@ const TOOLS = [
     id: 'claude',
     name: 'Claude.ai',
     url: 'claude.ai',
-    tagline: 'Solving Bugs using claudeAi',
+    tagline: 'Fix bugs with AI',
     category: 'solve',
     emoji: '🧠',
-    accent: '#00e5a0',
-    accentDim: 'rgba(0,229,160,0.1)',
-    accentBorder: 'rgba(0,229,160,0.2)',
-    glow: 'rgba(0,229,160,0.06)',
-    desc: 'An advanced AI assistant by Anthropic that helps with writing, coding, analysis, research, and creative tasks with nuanced, thoughtful responses.',
-    highlights: ['Advanced reasoning & nuanced analysis', 'Coding, writing & creative tasks', 'Long context & document understanding'],
+    accent: '#e8442a',
+    accentLight: '#fde8e4',
+    desc: 'Claude is an AI by Anthropic that helps you write, code, and think. It\'s especially good at reading your code and explaining what\'s wrong in plain language.',
+    highlights: ['Finds and explains bugs clearly', 'Helps with writing and ideas', 'Understands long documents'],
     steps: [
-      { label: "Code isn't working properly", img: 'images/claude1.png' },
-      { label: "Go to your IDE but can't find the bug", img: 'images/claude2.png' },
-      { label: 'Copy the code and paste it to claudeai', img: 'images/claude3.png' },
-      { label: 'Claudeai will give you the breakdown of the code and fix it', img: 'images/claude4.png' },
-      { label: 'Make changes on your code to work', img: 'images/claude5.png' },
+      { label: "Your code isn't working — something feels off", img: 'images/claude1.png' },
+      { label: "You've looked through the IDE but can't spot the bug", img: 'images/claude2.png' },
+      { label: 'Copy the code and paste it into Claude.ai', img: 'images/claude3.png' },
+      { label: 'Claude explains what\'s wrong and shows the fix', img: 'images/claude4.png' },
+      { label: 'Apply the changes — your code works now', img: 'images/claude5.png' },
     ]
   },
   {
     id: 'perplexity',
     name: 'Perplexity.ai',
     url: 'perplexity.ai',
-    tagline: 'Research using perplexity Ai',
+    tagline: 'Search that actually cites sources',
     category: 'research',
     emoji: '🔍',
-    accent: '#0099ff',
-    accentDim: 'rgba(0,153,255,0.1)',
-    accentBorder: 'rgba(0,153,255,0.2)',
-    glow: 'rgba(0,153,255,0.06)',
-    desc: 'An AI-powered search engine that provides accurate, cited answers by searching the web in real-time — perfect for in-depth research and fact-checking.',
-    highlights: ['Real-time web search with citations', 'AI-powered research summaries', 'Follow-up questions & deep dives'],
+    accent: '#1a7fc1',
+    accentLight: '#dceef8',
+    desc: 'Like Google, but smarter. Perplexity searches the web for you and writes a clear answer — with links to every source it used so you can check.',
+    highlights: ['Cites every source it uses', 'Searches the web in real time', 'Great for fact-checking'],
     steps: [
-      { label: 'Open perplexity.ai and type your research question', img: 'images/perplexity1.png' },
-      { label: 'Review cited sources in the answer panel', img: 'images/perplexity2.png' },
-      { label: 'Click sources to verify information', img: 'images/perplexity3.png' },
-      { label: 'Ask follow-up questions to go deeper', img: 'images/perplexity4.png' },
+      { label: 'Open Perplexity and type your question naturally', img: 'images/perplexity1.png' },
+      { label: 'Read the answer — all sources are listed on the side', img: 'images/perplexity2.png' },
+      { label: 'Click any source to read the original article', img: 'images/perplexity3.png' },
+      { label: 'Ask a follow-up to dig deeper into the topic', img: 'images/perplexity4.png' },
     ]
   },
   {
     id: 'syllaby',
     name: 'Syllaby.io',
     url: 'syllaby.io',
-    tagline: 'Faceless AI Videos',
+    tagline: 'Make videos without being on camera',
     category: 'create',
     emoji: '🎬',
-    accent: '#a855f7',
-    accentDim: 'rgba(168,85,247,0.1)',
-    accentBorder: 'rgba(168,85,247,0.2)',
-    glow: 'rgba(168,85,247,0.06)',
-    desc: 'Create faceless video content powered by AI. Generate scripts, voiceovers, and full video productions without appearing on camera.',
-    highlights: ['Script generation from topics', 'AI voiceover & narration', 'Faceless video auto-production'],
+    accent: '#7c3aed',
+    accentLight: '#ede9ff',
+    desc: 'Create full videos without ever showing your face. Syllaby writes the script, adds a voice, and puts the video together for you automatically.',
+    highlights: ['No camera needed', 'AI writes the script for you', 'Ready-to-post in minutes'],
     steps: [
-      { label: 'Sign in to syllaby.io and Click generate', img: 'images/syllaby1.png' },
-      { label: 'Click faceless', img: 'images/syllaby2.png' },
-      { label: 'Choose the video style, generate script, modify video settings', img: 'images/syllaby3.png' },
-      { label: 'Scroll down for more modifications', img: 'images/syllaby4.png' },
-      { label: 'Hit Generate', img: 'images/syllaby5.png' },
-      { label: 'Wait for the rendering process', img: 'images/syllaby6.png' },
-      { label: 'Video is generated', img: 'images/syllaby7.png' },
+      { label: 'Sign in to Syllaby and click Generate', img: 'images/syllaby1.png' },
+      { label: 'Choose "Faceless" as your video type', img: 'images/syllaby2.png' },
+      { label: 'Pick a style, generate a script, and tweak the settings', img: 'images/syllaby3.png' },
+      { label: 'Scroll down to adjust more details if needed', img: 'images/syllaby4.png' },
+      { label: 'Hit Generate when you\'re ready', img: 'images/syllaby5.png' },
+      { label: 'Wait while the video is being built', img: 'images/syllaby6.png' },
+      { label: 'Your video is ready to download or share', img: 'images/syllaby7.png' },
     ]
   },
   {
     id: 'tripo',
-    name: 'tripo.ai',
+    name: 'Tripo.ai',
     url: 'tripo.ai',
-    tagline: 'Create 3D Models',
+    tagline: 'Turn images into 3D models',
     category: 'create',
     emoji: '🌐',
-    accent: '#f59e0b',
-    accentDim: 'rgba(245,158,11,0.1)',
-    accentBorder: 'rgba(245,158,11,0.2)',
-    glow: 'rgba(245,158,11,0.06)',
-    desc: 'Capture and generate photorealistic 3D models using tripo ai. Turn photos or videos into stunning interactive 3D scenes in minutes.',
-    highlights: ['Text to 3D models', 'Image to 3D models', 'Interactive 3D model export'],
+    accent: '#d97706',
+    accentLight: '#fef3c7',
+    desc: 'Tripo turns a text prompt or an image into a fully rotatable 3D model. No 3D software skills needed — just describe what you want.',
+    highlights: ['Type a prompt, get a 3D model', 'Works from images too', 'Export and use anywhere'],
     steps: [
-      { label: 'Sign up and go to generate image', img: 'images/tripo1.png' },
-      { label: 'Use prompt for image generation then generate', img: 'images/tripo2.png' },
-      { label: 'Hover to image and click high detail model', img: 'images/tripo3.png' },
+      { label: 'Sign up and click Generate image', img: 'images/tripo1.png' },
+      { label: 'Type a description and generate the image', img: 'images/tripo2.png' },
+      { label: 'Hover over the image and click "High detail model"', img: 'images/tripo3.png' },
       { label: 'Click Generate model', img: 'images/tripo4.png' },
-      { label: 'Wait for it to load', img: 'images/tripo5.png' },
-      { label: 'Back position', img: 'images/tripo6.png' },
-      { label: 'Side position', img: 'images/tripo7.png' },
-      { label: 'Closeup position', img: 'images/tripo8.png' },
+      { label: 'Wait while the 3D model is being created', img: 'images/tripo5.png' },
+      { label: 'View from the back', img: 'images/tripo6.png' },
+      { label: 'View from the side', img: 'images/tripo7.png' },
+      { label: 'Zoomed in close-up view', img: 'images/tripo8.png' },
     ]
   },
   {
     id: 'suno',
     name: 'Suno.ai',
     url: 'suno.ai',
-    tagline: 'Compose Music',
+    tagline: 'Create original songs with AI',
     category: 'music',
     emoji: '🎵',
-    accent: '#ec4899',
-    accentDim: 'rgba(236,72,153,0.1)',
-    accentBorder: 'rgba(236,72,153,0.2)',
-    glow: 'rgba(236,72,153,0.06)',
-    desc: 'Generate full, original songs — complete with lyrics, instrumentation, and vocals — from a simple text prompt in any genre or style.',
-    highlights: ['Full song generation w/ vocals', 'Any genre from text prompt', 'Royalty-free original music'],
+    accent: '#db2777',
+    accentLight: '#fce7f3',
+    desc: 'Just type what you want to hear — Suno writes the lyrics, picks the instruments, and sings the whole song. Any genre, any mood, totally free to use.',
+    highlights: ['Full songs with real vocals', 'Any genre from a simple prompt', 'Free to use and share'],
     steps: [
-      { label: 'Go to suno.ai and sign in with your account', img: 'images/suno1.png' },
-      { label: 'Add prompt or click dice, then click create', img: 'images/suno2.png' },
-      { label: 'Choose custom mode to write your own lyrics', img: 'images/suno3.png' },
+      { label: 'Go to Suno.ai and sign in to your account', img: 'images/suno1.png' },
+      { label: 'Type a prompt or hit the dice for a random idea, then click Create', img: 'images/suno2.png' },
+      { label: 'Switch to Custom mode if you want to write your own lyrics', img: 'images/suno3.png' },
     ]
   },
   {
     id: 'higgsfield',
     name: 'Higgsfield',
     url: 'higgsfield.ai',
-    tagline: 'AI Visuals',
+    tagline: 'Generate cinematic AI videos',
     category: 'create',
     emoji: '🎥',
-    accent: '#06b6d4',
-    accentDim: 'rgba(6,182,212,0.1)',
-    accentBorder: 'rgba(6,182,212,0.2)',
-    glow: 'rgba(6,182,212,0.06)',
-    desc: 'Create cinematic, high-quality AI video/Image content with advanced camera controls and character consistency for professional visual storytelling.',
-    highlights: ['Cinematic AI video creation', 'Image creation', 'Consistent character rendering'],
+    accent: '#0891b2',
+    accentLight: '#cff0fa',
+    desc: 'Higgsfield makes high-quality AI videos and images from a text description. Great for visual content, social posts, or creative storytelling.',
+    highlights: ['Cinematic quality videos', 'Also creates still images', 'Characters look consistent across scenes'],
     steps: [
-      { label: 'Open higgsfield.ai and SignIn and click Create', img: 'images/higgsfield1.png' },
-      { label: 'Add your prompt', img: 'images/higgsfield2.png' },
-      { label: 'Wait for it to load', img: 'images/higgsfield3.png' },
-      { label: 'Make changes if needed', img: 'images/higgsfield4.png' },
+      { label: 'Open Higgsfield, sign in, and click Create', img: 'images/higgsfield1.png' },
+      { label: 'Type in your prompt describing the scene', img: 'images/higgsfield2.png' },
+      { label: 'Wait while the video generates', img: 'images/higgsfield3.png' },
+      { label: 'Tweak or refine if you want a different result', img: 'images/higgsfield4.png' },
     ]
   },
   {
     id: 'submagic',
     name: 'Submagic.co',
     url: 'submagic.co',
-    tagline: 'Edit Videos',
+    tagline: 'Auto-edit videos for social media',
     category: 'create',
     emoji: '✂️',
-    accent: '#10b981',
-    accentDim: 'rgba(16,185,129,0.1)',
-    accentBorder: 'rgba(16,185,129,0.2)',
-    glow: 'rgba(16,185,129,0.06)',
-    desc: 'AI-powered video editing with auto-generated captions, B-roll suggestions, and smart cuts that make short-form content creation effortless.',
-    highlights: ['Auto captions & subtitles', 'AI B-roll suggestions', 'Smart cuts for short-form'],
+    accent: '#1a9e72',
+    accentLight: '#d4f0e5',
+    desc: 'Upload a video or paste a YouTube link — Submagic finds the best clips, adds captions, and formats everything for TikTok or Reels automatically.',
+    highlights: ['Auto-generates captions', 'Finds the best clips for you', 'Perfect for TikTok and Reels'],
     steps: [
-      { label: 'Go to submagic.co and click Create project', img: 'images/submagic1.png' },
-      { label: "For this demo we'll choose Magic clips", img: 'images/submagic2.png' },
-      { label: 'You can upload your own video or get it from YouTube', img: 'images/submagic3.png' },
-      { label: "We'll use YouTube for this demo", img: 'images/submagic4.png' },
-      { label: 'Get link', img: 'images/submagic5.png' },
-      { label: 'Paste Link and adjust to your liking', img: 'images/submagic6.png' },
-      { label: 'Wait for it to generate', img: 'images/submagic7.png' },
-      { label: 'Review your clips for Tiktok/Reels', img: 'images/submagic8.png' },
+      { label: 'Go to Submagic and click Create project', img: 'images/submagic1.png' },
+      { label: 'For this guide we\'ll use Magic clips', img: 'images/submagic2.png' },
+      { label: 'You can upload a video or grab one from YouTube', img: 'images/submagic3.png' },
+      { label: 'We\'ll use YouTube for this example', img: 'images/submagic4.png' },
+      { label: 'Copy the video link from YouTube', img: 'images/submagic5.png' },
+      { label: 'Paste the link and adjust the settings', img: 'images/submagic6.png' },
+      { label: 'Wait while Submagic processes the video', img: 'images/submagic7.png' },
+      { label: 'Pick your favourite clips — ready for TikTok or Reels', img: 'images/submagic8.png' },
     ]
   },
   {
     id: 'reccloud',
     name: 'RecCloud.com',
     url: 'reccloud.com',
-    tagline: 'Summarize YouTube',
+    tagline: 'Summarize any YouTube video',
     category: 'research',
     emoji: '📝',
-    accent: '#f97316',
-    accentDim: 'rgba(249,115,22,0.1)',
-    accentBorder: 'rgba(249,115,22,0.2)',
-    glow: 'rgba(249,115,22,0.06)',
-    desc: 'Instantly summarize YouTube videos, transcribe recordings, and extract key insights from long-form video content using AI.',
-    highlights: ['YouTube video summarization', 'Audio transcription & notes', 'Key insight extraction'],
+    accent: '#ea580c',
+    accentLight: '#ffedd5',
+    desc: 'Paste a YouTube link and get a clear summary in seconds. No need to watch a 1-hour video — just get the key points and a full transcript.',
+    highlights: ['Summarizes any YouTube video', 'Full transcript included', 'Pulls out the key takeaways'],
     steps: [
-      { label: 'Signin and click Yt video summarizer', img: 'images/reccloud1.png' },
-      { label: 'Paste YouTube link and click summarize', img: 'images/reccloud2.png' },
-      { label: 'Wait for it to load', img: 'images/reccloud3.png' },
-      { label: 'Check the summary', img: 'images/reccloud4.png' },
-      { label: 'Check the transcript', img: 'images/reccloud5.png' },
+      { label: 'Sign in and click YouTube Video Summarizer', img: 'images/reccloud1.png' },
+      { label: 'Paste the YouTube link and click Summarize', img: 'images/reccloud2.png' },
+      { label: 'Wait a moment while it processes', img: 'images/reccloud3.png' },
+      { label: 'Read the summary — key points are highlighted', img: 'images/reccloud4.png' },
+      { label: 'Scroll down to see the full transcript', img: 'images/reccloud5.png' },
     ]
   },
   {
     id: 'canva',
     name: 'Canva.com',
     url: 'canva.com',
-    tagline: 'Design Graphics',
+    tagline: 'Design anything with AI help',
     category: 'design',
     emoji: '🎨',
-    accent: '#8b5cf6',
-    accentDim: 'rgba(139,92,246,0.1)',
-    accentBorder: 'rgba(139,92,246,0.2)',
-    glow: 'rgba(139,92,246,0.06)',
-    desc: 'The world\'s most popular AI-powered design platform. Create stunning graphics, presentations, social media content, and print materials with ease.',
-    highlights: ['AI image & graphic generation', '1000+ templates & assets', 'Brand kit & collaboration'],
+    accent: '#7c3aed',
+    accentLight: '#ede9ff',
+    desc: 'Canva is the easiest way to create designs — logos, social posts, presentations, and more. The AI feature helps you build something great just by describing it.',
+    highlights: ['Describe it, AI builds it', 'Thousands of ready-made templates', 'Share and collaborate easily'],
     steps: [
-      { label: 'Open canva app and click Canva AI', img: 'images/canva1.png' },
-      { label: 'Add your prompt', img: 'images/canva2.png' },
-      { label: 'It will ask you for more information', img: 'images/canva3.png' },
-      { label: 'Just keep answering them for best result', img: 'images/canva4.png' },
-      { label: 'Pick from the result', img: 'images/canva5.png' },
-      { label: 'Customize it from your liking', img: 'images/canva6.png' },
+      { label: 'Open Canva and tap Canva AI', img: 'images/canva1.png' },
+      { label: 'Type what you want to create', img: 'images/canva2.png' },
+      { label: 'Answer a few quick questions to get better results', img: 'images/canva3.png' },
+      { label: 'Keep going — the more you answer, the better the design', img: 'images/canva4.png' },
+      { label: 'Pick the design you like best', img: 'images/canva5.png' },
+      { label: 'Customise the colors, text, and layout to your taste', img: 'images/canva6.png' },
     ]
   },
   {
     id: 'elevenlabs',
     name: 'ElevenLabs.io',
     url: 'elevenlabs.io',
-    tagline: 'Clone Voices',
+    tagline: 'Clone your voice with AI',
     category: 'create',
     emoji: '🔊',
-    accent: '#f43f5e',
-    accentDim: 'rgba(244,63,94,0.1)',
-    accentBorder: 'rgba(244,63,94,0.2)',
-    glow: 'rgba(244,63,94,0.06)',
-    desc: 'The leading AI voice platform — clone any voice, generate realistic speech in 29 languages, and create professional audio content at scale.',
-    highlights: ['Voice cloning in minutes', '29-language TTS support', 'API for audio at scale'],
+    accent: '#db2777',
+    accentLight: '#fce7f3',
+    desc: 'Record a short audio clip and ElevenLabs clones your voice. You can then type anything and it reads it back in your own voice — in 29 languages.',
+    highlights: ['Clone your voice in minutes', 'Speaks in 29 languages', 'Sounds incredibly natural'],
     steps: [
-      { label: 'Create an account at elevenlabs.io and click clone your own voice', img: 'images/elevenlabs1.png' },
-      { label: 'Click instant clone voice', img: 'images/elevenlabs2.png' },
-      { label: 'Record audio', img: 'images/elevenlabs3.png' },
-      { label: 'Click next once done with recording', img: 'images/elevenlabs4.png' },
-      { label: 'Save your voice', img: 'images/elevenlabs5.png' },
+      { label: 'Create an account and click Clone your own voice', img: 'images/elevenlabs1.png' },
+      { label: 'Choose Instant voice clone', img: 'images/elevenlabs2.png' },
+      { label: 'Record a short audio sample of your voice', img: 'images/elevenlabs3.png' },
+      { label: 'Click Next when you\'re done recording', img: 'images/elevenlabs4.png' },
+      { label: 'Save your voice clone — it\'s ready to use', img: 'images/elevenlabs5.png' },
     ]
   },
   {
     id: 'openclaw',
     name: 'OpenClaw',
     url: 'openclawengine.xyz',
-    tagline: 'Deploy AI Workflows',
+    tagline: 'Build your own AI bot',
     category: 'deploy',
     emoji: '⚙️',
-    accent: '#64748b',
-    accentDim: 'rgba(100,116,139,0.1)',
-    accentBorder: 'rgba(100,116,139,0.2)',
-    glow: 'rgba(100,116,139,0.06)',
-    desc: 'Deploy and manage OpenClaw engine instances for AI-powered automation, enabling scalable and customizable AI workflow deployments.',
-    highlights: ['OpenClaw engine deployment', 'AI workflow automation', 'Scalable instance management'],
+    accent: '#475569',
+    accentLight: '#e2e8f0',
+    desc: 'OpenClaw lets you set up and run your own AI-powered bot — like a personal assistant on Telegram that you can program to do tasks for you automatically.',
+    highlights: ['Run your own AI workflows', 'Connects to Telegram', 'Automates repetitive tasks'],
     steps: [
-      { label: 'Go to openclaw.com and copy the prompt', img: 'images/openclaw1.png' },
-      { label: 'Go to your terminal and paste the copied text', img: 'images/openclaw2.png' },
-      { label: 'Wait for it to install', img: 'images/openclaw3.png' },
-      { label: 'Open openclaw onboard', img: 'images/openclaw4.png' },
-      { label: 'Configure', img: 'images/openclaw5.png' },
-      { label: 'Configure', img: 'images/openclaw6.png' },
-      { label: 'Configure', img: 'images/openclaw7.png' },
-      { label: 'Configure', img: 'images/openclaw8.png' },
-      { label: 'Configure', img: 'images/openclaw9.png' },
-      { label: 'Go to Telegram and find BotFather', img: 'images/openclaw10.png' },
-      { label: 'Read all the instruction and follow', img: 'images/openclaw11.png' },
-      { label: 'Go to your bot and get the configuration code', img: 'images/openclaw12.png' },
-      { label: 'Copy the prompt and paste to another terinal', img: 'images/openclaw13.png' },
-      { label: 'Now your bot should work', img: 'images/openclaw14.png' },
-      { label: 'You can give it a job like this', img: 'images/openclaw15.png' },
+      { label: 'Visit OpenClaw and copy the install command', img: 'images/openclaw1.png' },
+      { label: 'Open your terminal and paste the command', img: 'images/openclaw2.png' },
+      { label: 'Wait for everything to finish installing', img: 'images/openclaw3.png' },
+      { label: 'Open the OpenClaw onboarding setup', img: 'images/openclaw4.png' },
+      { label: 'Step 1 of configuration', img: 'images/openclaw5.png' },
+      { label: 'Step 2 of configuration', img: 'images/openclaw6.png' },
+      { label: 'Step 3 of configuration', img: 'images/openclaw7.png' },
+      { label: 'Step 4 of configuration', img: 'images/openclaw8.png' },
+      { label: 'Step 5 of configuration', img: 'images/openclaw9.png' },
+      { label: 'Open Telegram and search for BotFather', img: 'images/openclaw10.png' },
+      { label: 'Follow the instructions to create your bot', img: 'images/openclaw11.png' },
+      { label: 'Get your bot\'s configuration code', img: 'images/openclaw12.png' },
+      { label: 'Paste the code into a new terminal window', img: 'images/openclaw13.png' },
+      { label: 'Your bot is now live and ready', img: 'images/openclaw14.png' },
+      { label: 'Give it a task to try it out', img: 'images/openclaw15.png' },
     ]
   },
 ];
@@ -759,22 +757,19 @@ function renderGrid(filter = 'all') {
   const filtered = filter === 'all' ? TOOLS : TOOLS.filter(t => t.category === filter);
   grid.innerHTML = filtered.map((t, i) => `
     <div class="tool-card" style="
-      --card-glow: ${t.glow};
-      --card-accent: ${t.accentBorder};
-      --card-accent-color: ${t.accent};
-      --card-icon-bg: ${t.accentDim};
-      --card-icon-border: ${t.accentBorder};
-      animation-delay: ${i * 0.06}s;
+      --card-accent: ${t.accent};
+      --card-icon-bg: ${t.accentLight};
+      animation-delay: ${i * 0.05}s;
     " onclick="openDetail('${t.id}')">
-      <span class="card-number">${String(i+1).padStart(2,'0')} — ${t.category.toUpperCase()}</span>
+      <span class="card-number">${String(i+1).padStart(2,'0')} · ${t.category}</span>
       <div class="card-icon">${t.emoji}</div>
       <div class="card-title">${t.name}</div>
-      <div class="card-tagline">"${t.tagline}"</div>
+      <div class="card-tagline">${t.tagline}</div>
       <div class="card-desc">${t.desc}</div>
       <div class="card-tags">
         ${t.highlights.map(h => `<span class="card-tag">${h}</span>`).join('')}
       </div>
-      <button class="card-btn">View Guide →</button>
+      <button class="card-btn">See how it works →</button>
     </div>
   `).join('');
 }
@@ -783,9 +778,11 @@ function openDetail(id) {
   const t = TOOLS.find(x => x.id === id);
   if (!t) return;
 
-  document.getElementById('detail-page').style.setProperty('--detail-accent', t.accent);
-  document.getElementById('detail-nav-name').textContent = t.name;
-  document.getElementById('detail-nav-tag').textContent = t.tagline.toUpperCase();
+  const dp = document.getElementById('detail-page');
+  dp.style.setProperty('--detail-accent', t.accent);
+  dp.style.setProperty('--detail-accent-light', t.accentLight);
+  document.getElementById('detail-nav-name').innerHTML = 'AI<em>Boost</em>';
+  document.getElementById('detail-nav-tag').textContent = 'Step-by-step guide';
 
   document.getElementById('detail-hero-content').innerHTML = `
     <div class="detail-badge">${t.emoji} ${t.name}</div>
@@ -799,10 +796,10 @@ function openDetail(id) {
 
   const stepsHtml = `
     <div class="section-header">
-      <span class="section-label">Step-by-Step Guide</span>
+      <span class="section-label">How to use it</span>
       <div class="section-line"></div>
     </div>
-    <div class="screenshot-grid cols-3" data-step="How to Use ${t.name}">
+    <div class="screenshot-grid cols-3">
       ${t.steps.map((s, idx) => `
         <div class="screenshot-thumb" onclick="openModal(this)" data-label="${s.label}" data-img="${s.img}">
           <div class="thumb-placeholder no-img" id="ph-${t.id}-${idx}">
@@ -834,7 +831,7 @@ function openDetail(id) {
   });
 
   document.getElementById('main-page').classList.remove('active');
-  document.getElementById('detail-page').classList.add('active');
+  dp.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -848,31 +845,29 @@ let modalThumbs = [];
 let modalIndex  = 0;
 
 function loadModalAt(index) {
-  const el    = modalThumbs[index];
-  const label = el.getAttribute('data-label');
+  const el     = modalThumbs[index];
+  const label  = el.getAttribute('data-label');
   const imgSrc = el.getAttribute('data-img');
-  const wrap  = document.getElementById('modal-img-wrap');
-  const existingImg = el.querySelector('.thumb-img');
-  const total = modalThumbs.length;
+  const wrap   = document.getElementById('modal-img-wrap');
+  const existing = el.querySelector('.thumb-img');
+  const total  = modalThumbs.length;
 
-  if (existingImg && existingImg.complete && existingImg.naturalWidth > 0) {
-    wrap.innerHTML = `<img src="${existingImg.src}" alt="${label}">`;
+  if (existing && existing.complete && existing.naturalWidth > 0) {
+    wrap.innerHTML = `<img src="${existing.src}" alt="${label}">`;
   } else if (imgSrc) {
     wrap.innerHTML = `<div class="modal-img-placeholder">Loading…</div>`;
-    const testImg = new Image();
-    testImg.onload = () => { wrap.innerHTML = `<img src="${imgSrc}" alt="${label}">`; };
-    testImg.onerror = () => {
-      wrap.innerHTML = `<div class="modal-img-placeholder">No image yet<br><small style="opacity:0.4">${imgSrc}</small></div>`;
-    };
-    testImg.src = imgSrc;
+    const test = new Image();
+    test.onload  = () => { wrap.innerHTML = `<img src="${imgSrc}" alt="${label}">`; };
+    test.onerror = () => { wrap.innerHTML = `<div class="modal-img-placeholder">No image yet<br><small style="opacity:0.3">${imgSrc}</small></div>`; };
+    test.src = imgSrc;
   } else {
     wrap.innerHTML = `<div class="modal-img-placeholder">No image uploaded yet</div>`;
   }
 
-  const thumbLabel = el.querySelector('.thumb-label strong');
-  document.getElementById('modal-label').textContent = label;
-  document.getElementById('modal-sublabel').textContent = thumbLabel ? thumbLabel.textContent : '';
-  document.getElementById('modal-counter').textContent = `${index + 1} / ${total}`;
+  const strong = el.querySelector('.thumb-label strong');
+  document.getElementById('modal-label').textContent   = label;
+  document.getElementById('modal-sublabel').textContent = strong ? strong.textContent : '';
+  document.getElementById('modal-counter').textContent  = `${index + 1} / ${total}`;
   document.getElementById('modal-prev').disabled = index === 0;
   document.getElementById('modal-next').disabled = index === total - 1;
 }
@@ -892,29 +887,21 @@ function modalNav(dir) {
   loadModalAt(modalIndex);
 }
 
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-}
-
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('modal')) closeModal();
-}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
 
 document.addEventListener('keydown', e => {
   if (!document.getElementById('modal').classList.contains('open')) return;
-  if (e.key === 'Escape')      closeModal();
-  if (e.key === 'ArrowLeft')   modalNav(-1);
-  if (e.key === 'ArrowRight')  modalNav(1);
+  if (e.key === 'Escape')     closeModal();
+  if (e.key === 'ArrowLeft')  modalNav(-1);
+  if (e.key === 'ArrowRight') modalNav(1);
 });
 
 window.addEventListener('scroll', () => {
-  const btn = document.getElementById('scroll-up-btn');
-  btn.classList.toggle('visible', window.scrollY > 300);
+  document.getElementById('scroll-up-btn').classList.toggle('visible', window.scrollY > 300);
 });
 
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
