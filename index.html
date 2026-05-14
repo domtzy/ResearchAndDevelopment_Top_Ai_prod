@@ -33,6 +33,13 @@
     --orange-light: #ffedd5;
     --slate: #475569;
     --slate-light: #e2e8f0;
+
+    --free-bg: #dcfce7;
+    --free-border: #16a34a;
+    --free-text: #15803d;
+    --free-partial-bg: #fef9c3;
+    --free-partial-border: #ca8a04;
+    --free-partial-text: #a16207;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -146,6 +153,35 @@
   .filter-btn.active {
     background: var(--ink); border-color: var(--ink); color: #fff;
     box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+  }
+
+  /* FREE TIER BADGE */
+  .free-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+    padding: 3px 10px; border-radius: 100px;
+    border: 1.5px solid;
+    white-space: nowrap;
+  }
+  .free-badge.full {
+    background: var(--free-bg);
+    border-color: var(--free-border);
+    color: var(--free-text);
+  }
+  .free-badge.partial {
+    background: var(--free-partial-bg);
+    border-color: var(--free-partial-border);
+    color: var(--free-partial-text);
+  }
+  .free-badge::before {
+    content: '✦';
+    font-size: 8px;
+  }
+
+  /* Card free badge row */
+  .card-free-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px; margin-top: 4px;
   }
 
   /* TOOLS GRID */
@@ -263,8 +299,14 @@
     text-decoration: underline; text-underline-offset: 3px;
   }
   .detail-desc {
-    font-size: 16px; color: var(--muted); max-width: 620px; margin-bottom: 32px;
+    font-size: 16px; color: var(--muted); max-width: 620px; margin-bottom: 20px;
     line-height: 1.8;
+  }
+  .detail-free-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 32px;
+  }
+  .detail-free-label {
+    font-size: 12px; color: var(--muted); font-weight: 400;
   }
   .detail-highlights {
     display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px;
@@ -537,12 +579,14 @@ const TOOLS = [
     accentLight: '#fde8e4',
     desc: 'Claude is an AI by Anthropic that helps you write, code, and think. It\'s especially good at reading your code and explaining what\'s wrong in plain language.',
     highlights: ['Finds and explains bugs clearly', 'Helps with writing and ideas', 'Understands long documents'],
+    freeTier: { type: 'full', label: 'Free tier available', note: 'Free plan with daily message limits' },
     steps: [
       { label: "Your code isn't working — something feels off", img: 'images/claude1.png' },
       { label: "You've looked through the IDE but can't spot the bug", img: 'images/claude2.png' },
       { label: 'Copy the code and paste it into Claude.ai', img: 'images/claude3.png' },
       { label: 'Claude explains what\'s wrong and shows the fix', img: 'images/claude4.png' },
       { label: 'Apply the changes — your code works now', img: 'images/claude5.png' },
+      { label: 'Claude plans and perks', img: 'images/claudeplans.png' },
     ]
   },
   {
@@ -556,11 +600,15 @@ const TOOLS = [
     accentLight: '#dceef8',
     desc: 'Like Google, but smarter. Perplexity searches the web for you and writes a clear answer — with links to every source it used so you can check.',
     highlights: ['Cites every source it uses', 'Searches the web in real time', 'Great for fact-checking'],
+    freeTier: { type: 'full', label: 'Free credits available', note: 'Free plan with standard searches' },
     steps: [
       { label: 'Open Perplexity and type your question naturally', img: 'images/perplexity1.png' },
       { label: 'Read the answer — all sources are listed on the side', img: 'images/perplexity2.png' },
       { label: 'Click any source to read the original article', img: 'images/perplexity3.png' },
       { label: 'Ask a follow-up to dig deeper into the topic', img: 'images/perplexity4.png' },
+      { label: 'Perplexity plans', img: 'images/perplexityplans1.png' },
+      { label: 'Perplexity plans', img: 'images/perplexityplans2.png' },
+      { label: 'Perplexity plans', img: 'images/perplexityplans3.png' },
     ]
   },
   {
@@ -574,6 +622,7 @@ const TOOLS = [
     accentLight: '#ede9ff',
     desc: 'Create full videos without ever showing your face. Syllaby writes the script, adds a voice, and puts the video together for you automatically.',
     highlights: ['No camera needed', 'AI writes the script for you', 'Ready-to-post in minutes'],
+    freeTier: { type: 'partial', label: 'Free trial only', note: '7-day free trial, then paid plans' },
     steps: [
       { label: 'Sign in to Syllaby and click Generate', img: 'images/syllaby1.png' },
       { label: 'Choose "Faceless" as your video type', img: 'images/syllaby2.png' },
@@ -582,6 +631,8 @@ const TOOLS = [
       { label: 'Hit Generate when you\'re ready', img: 'images/syllaby5.png' },
       { label: 'Wait while the video is being built', img: 'images/syllaby6.png' },
       { label: 'Your video is ready to download or share', img: 'images/syllaby7.png' },
+      { label: 'Syllaby plans', img: 'images/syllabyplans1.png' },
+      { label: 'Syllaby plans', img: 'images/syllabyplans2.png' },
     ]
   },
   {
@@ -595,6 +646,7 @@ const TOOLS = [
     accentLight: '#fef3c7',
     desc: 'Tripo turns a text prompt or an image into a fully rotatable 3D model. No 3D software skills needed — just describe what you want.',
     highlights: ['Type a prompt, get a 3D model', 'Works from images too', 'Export and use anywhere'],
+    freeTier: { type: 'partial', label: 'Free credits on signup', note: 'Limited free credits, then pay-as-you-go' },
     steps: [
       { label: 'Sign up and click Generate image', img: 'images/tripo1.png' },
       { label: 'Type a description and generate the image', img: 'images/tripo2.png' },
@@ -604,6 +656,7 @@ const TOOLS = [
       { label: 'View from the back', img: 'images/tripo6.png' },
       { label: 'View from the side', img: 'images/tripo7.png' },
       { label: 'Zoomed in close-up view', img: 'images/tripo8.png' },
+      { label: 'Tripo plans', img: 'images/tripoplans.png' },
     ]
   },
   {
@@ -617,10 +670,12 @@ const TOOLS = [
     accentLight: '#fce7f3',
     desc: 'Just type what you want to hear — Suno writes the lyrics, picks the instruments, and sings the whole song. Any genre, any mood, totally free to use.',
     highlights: ['Full songs with real vocals', 'Any genre from a simple prompt', 'Free to use and share'],
+    freeTier: { type: 'full', label: 'Free credits available', note: 'Free plan with 50 credits/day' },
     steps: [
       { label: 'Go to Suno.ai and sign in to your account', img: 'images/suno1.png' },
       { label: 'Type a prompt or hit the dice for a random idea, then click Create', img: 'images/suno2.png' },
       { label: 'Switch to Custom mode if you want to write your own lyrics', img: 'images/suno3.png' },
+      { label: 'Suno plans', img: 'images/sunoplans.png' },
     ]
   },
   {
@@ -634,11 +689,14 @@ const TOOLS = [
     accentLight: '#cff0fa',
     desc: 'Higgsfield makes high-quality AI videos and images from a text description. Great for visual content, social posts, or creative storytelling.',
     highlights: ['Cinematic quality videos', 'Also creates still images', 'Characters look consistent across scenes'],
+    freeTier: { type: 'partial', label: 'Free credits on signup', note: 'Limited free generations at sign-up' },
     steps: [
       { label: 'Open Higgsfield, sign in, and click Create', img: 'images/higgsfield1.png' },
       { label: 'Type in your prompt describing the scene', img: 'images/higgsfield2.png' },
       { label: 'Wait while the video generates', img: 'images/higgsfield3.png' },
       { label: 'Tweak or refine if you want a different result', img: 'images/higgsfield4.png' },
+      { label: 'Higgsfield plas', img: 'images/higgsfieldplans.png' },
+      { label: 'Higgsfield plas', img: 'images/higgsfieldplans1.png' },
     ]
   },
   {
@@ -652,6 +710,7 @@ const TOOLS = [
     accentLight: '#d4f0e5',
     desc: 'Upload a video or paste a YouTube link — Submagic finds the best clips, adds captions, and formats everything for TikTok or Reels automatically.',
     highlights: ['Auto-generates captions', 'Finds the best clips for you', 'Perfect for TikTok and Reels'],
+    freeTier: { type: 'partial', label: 'Free trial only', note: 'Limited free trial, then paid plans' },
     steps: [
       { label: 'Go to Submagic and click Create project', img: 'images/submagic1.png' },
       { label: 'For this guide we\'ll use Magic clips', img: 'images/submagic2.png' },
@@ -661,6 +720,7 @@ const TOOLS = [
       { label: 'Paste the link and adjust the settings', img: 'images/submagic6.png' },
       { label: 'Wait while Submagic processes the video', img: 'images/submagic7.png' },
       { label: 'Pick your favourite clips — ready for TikTok or Reels', img: 'images/submagic8.png' },
+      { label: 'Submagic plans', img: 'images/submagicplans.png' },
     ]
   },
   {
@@ -674,12 +734,14 @@ const TOOLS = [
     accentLight: '#ffedd5',
     desc: 'Paste a YouTube link and get a clear summary in seconds. No need to watch a 1-hour video — just get the key points and a full transcript.',
     highlights: ['Summarizes any YouTube video', 'Full transcript included', 'Pulls out the key takeaways'],
+    freeTier: { type: 'full', label: 'Free tier available', note: 'Free plan with limited summaries/month' },
     steps: [
       { label: 'Sign in and click YouTube Video Summarizer', img: 'images/reccloud1.png' },
       { label: 'Paste the YouTube link and click Summarize', img: 'images/reccloud2.png' },
       { label: 'Wait a moment while it processes', img: 'images/reccloud3.png' },
       { label: 'Read the summary — key points are highlighted', img: 'images/reccloud4.png' },
       { label: 'Scroll down to see the full transcript', img: 'images/reccloud5.png' },
+      { label: 'RecCloud plans', img: 'images/reccloudplans.png' },
     ]
   },
   {
@@ -693,6 +755,7 @@ const TOOLS = [
     accentLight: '#ede9ff',
     desc: 'Canva is the easiest way to create designs — logos, social posts, presentations, and more. The AI feature helps you build something great just by describing it.',
     highlights: ['Describe it, AI builds it', 'Thousands of ready-made templates', 'Share and collaborate easily'],
+    freeTier: { type: 'full', label: 'Free tier available', note: 'Generous free plan; AI features need Pro' },
     steps: [
       { label: 'Open Canva and tap Canva AI', img: 'images/canva1.png' },
       { label: 'Type what you want to create', img: 'images/canva2.png' },
@@ -700,6 +763,7 @@ const TOOLS = [
       { label: 'Keep going — the more you answer, the better the design', img: 'images/canva4.png' },
       { label: 'Pick the design you like best', img: 'images/canva5.png' },
       { label: 'Customise the colors, text, and layout to your taste', img: 'images/canva6.png' },
+      { label: 'Canva Plans', img: 'images/canvaplans.png' },
     ]
   },
   {
@@ -713,12 +777,14 @@ const TOOLS = [
     accentLight: '#fce7f3',
     desc: 'Record a short audio clip and ElevenLabs clones your voice. You can then type anything and it reads it back in your own voice — in 29 languages.',
     highlights: ['Clone your voice in minutes', 'Speaks in 29 languages', 'Sounds incredibly natural'],
+    freeTier: { type: 'full', label: 'Free credits available', note: 'Free plan with 10,000 credits/month' },
     steps: [
       { label: 'Create an account and click Clone your own voice', img: 'images/elevenlabs1.png' },
       { label: 'Choose Instant voice clone', img: 'images/elevenlabs2.png' },
       { label: 'Record a short audio sample of your voice', img: 'images/elevenlabs3.png' },
       { label: 'Click Next when you\'re done recording', img: 'images/elevenlabs4.png' },
       { label: 'Save your voice clone — it\'s ready to use', img: 'images/elevenlabs5.png' },
+      { label: 'Elevenlabs Plans', img: 'images/elevenlabsplans.png' },
     ]
   },
   {
@@ -732,6 +798,7 @@ const TOOLS = [
     accentLight: '#e2e8f0',
     desc: 'OpenClaw lets you set up and run your own AI-powered bot — like a personal assistant on Telegram that you can program to do tasks for you automatically.',
     highlights: ['Run your own AI workflows', 'Connects to Telegram', 'Automates repetitive tasks'],
+    freeTier: { type: 'full', label: 'Free & open source', note: 'Fully free to self-host' },
     steps: [
       { label: 'Visit OpenClaw and copy the install command', img: 'images/openclaw1.png' },
       { label: 'Open your terminal and paste the command', img: 'images/openclaw2.png' },
@@ -752,6 +819,11 @@ const TOOLS = [
   },
 ];
 
+function freeBadgeHTML(freeTier) {
+  if (!freeTier) return '';
+  return `<span class="free-badge ${freeTier.type}" title="${freeTier.note}">${freeTier.label}</span>`;
+}
+
 function renderGrid(filter = 'all') {
   const grid = document.getElementById('tools-grid');
   const filtered = filter === 'all' ? TOOLS : TOOLS.filter(t => t.category === filter);
@@ -765,6 +837,9 @@ function renderGrid(filter = 'all') {
       <div class="card-icon">${t.emoji}</div>
       <div class="card-title">${t.name}</div>
       <div class="card-tagline">${t.tagline}</div>
+      <div class="card-free-row">
+        ${freeBadgeHTML(t.freeTier)}
+      </div>
       <div class="card-desc">${t.desc}</div>
       <div class="card-tags">
         ${t.highlights.map(h => `<span class="card-tag">${h}</span>`).join('')}
@@ -789,6 +864,10 @@ function openDetail(id) {
     <div class="detail-title">${t.tagline}</div>
     <div class="detail-tagline">${t.url}</div>
     <div class="detail-desc">${t.desc}</div>
+    <div class="detail-free-row">
+      ${freeBadgeHTML(t.freeTier)}
+      ${t.freeTier ? `<span class="detail-free-label">${t.freeTier.note}</span>` : ''}
+    </div>
     <div class="detail-highlights">
       ${t.highlights.map(h => `<span class="highlight-chip">${h}</span>`).join('')}
     </div>
